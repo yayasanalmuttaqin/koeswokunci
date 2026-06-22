@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Dar El-Muttaqin - Konsep Klp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0f5132; /* Hijau khas Islami/Yayasan */
+            --secondary-color: #ffc107; /* Gold/Kuning aksen */
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+
+        body {
+            color: var(--dark-color);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #0b3d26;
+        }
+
+        /* Hamburger Menu (Mobile) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            margin-top: 75px;
+            height: 80vh;
+            background: linear-gradient(rgba(15, 81, 50, 0.8), rgba(15, 81, 50, 0.6)), 
+                        url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* --- PROGRAM/SERVICES SECTION --- */
+        .programs {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .section-subtitle {
+            color: #6c757d;
+            margin-bottom: 50px;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .program-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* --- RESPONSIVE STYLES (MOBILE MENU CONCEPT) --- */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background-color: #ffffff;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                gap: 30px;
+                box-shadow: -5px 5px 10px rgba(0,0,0,0.05);
+                transition: right 0.4s ease;
+            }
+
+            /* Kelas aktif saat tombol menu diklik */
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-mosque"></i> 
+                <span>Yayasan Al-Muttaqin</span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Program</a></li>
+                <li><a href="#">Berita</a></li>
+                <li><a href="#" class="cta-btn">SPSB 2026/2027</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Membentuk Generasi Prestatif dan Kompetitif dalam hal yang Positif</h1>
+            <p>Yayasan Pendidikan Islam AMuttaqin menyediakan pendidikan diniyah gratis untuk semua.</p>
+            <a href="#" class="hero-btn">Daftar Sekarang</a>
+        </div>
+    </section>
+
+    <section class="programs">
+        <h2 class="section-title">Program Pendidikan</h2>
+        <p class="section-subtitle">Jenjang pendidikan yang tersedia di Yayasan Dar El-Muttaqin</p>
+        
+        <div class="program-grid">
+            <div class="program-card">
+                <i class="fa-solid fa-child"></i>
+                <h3>Tahfidz Anak (TK/TPA)</h3>
+                <p>Menanamkan kecintaan pada Al-Qur'an sejak usia dini dengan metode yang menyenangkan.</p>
+            </div>
+            <div class="program-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Madrasah Tsanawiyah</h3>
+                <p>Pendidikan tingkat menengah yang memadukan kurikulum nasional dan kepesantrenan.</p>
+            </div>
+            <div class="program-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Madrasah Aliyah</h3>
+                <p>Mempersiapkan santri untuk melanjutkan ke perguruan tinggi dalam maupun luar negeri.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            // Membuka/menutup menu samping di mobile
+            navLinks.classList.toggle('active');
+            
+            // Mengubah icon hamburger menjadi ikon 'X' saat menu terbuka
+            const icon = menuToggle.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

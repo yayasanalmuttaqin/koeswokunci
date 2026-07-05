@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrasah Diniyah Al-Muttaqin - Bojonegoro</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Quore&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0A3A20; /* Hijau NU Premium */
+            --primary-light: #125B34; /* Hijau Aksen */
+            --accent-gold: #D4AF37; /* Emas Elegan */
+            --text-dark: #2B2B2B;
+            --text-light: #F9F9F9;
+            --bg-light: #F4F7F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar info */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            padding: 8px 10%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .top-bar span i {
+            color: var(--accent-gold);
+            margin-right: 5px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: var(--primary-dark);
+            color: var(--accent-gold);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-light);
+        }
+
+        .btn-daftar {
+            background-color: var(--primary-dark);
+            color: white !important;
+            padding: 8px 20px !important;
+            border-radius: 25px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-daftar:hover {
+            background-color: var(--accent-gold) !important;
+            color: var(--primary-dark) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 58, 32, 0.85), rgba(10, 58, 32, 0.95)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h2 span {
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 30px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-3px);
+            background-color: #fff;
+        }
+
+        /* Keunggulan / Features */
+        .features {
+            padding: 80px 10%;
+            background-color: var(--bg-light);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        /* Profil Section */
+        .about {
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent-gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin-top: 10px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Program Kelas */
+        .programs {
+            padding: 100px 10%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            transform: scale(1.02);
+        }
+
+        .program-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+
+        .program-header h3 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+        }
+
+        .program-body {
+            padding: 30px;
+        }
+
+        .program-body ul {
+            list-style: none;
+        }
+
+        .program-body ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .program-body ul li i {
+            color: var(--primary-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 70px 10% 30px 10%;
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 12px;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar, nav { display: none; }
+            .about { flex-direction: column; }
+            .hero h2 { font-size: 2rem; }
+            .features { grid-template-columns: 1fr; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div>
+            <span><i class="fas fa-map-marker-alt"></i> Desa Kunci, Dander, Bojonegoro</span>
+        </div>
+        <div>
+            <span><i class="fas fa-phone"></i> +62 812-3456-7890</span>
+            <span style="margin-left: 15px;"><i class="fas fa-envelope"></i> info@almuttaqin-kunci.sch.id</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>AL-MUTTAQIN</h1>
+                    <p>Madrasah Diniyah - Kunci Dander</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#akademik">Akademik</a></li>
+                    <li><a href="#fasilitas">Fasilitas</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#daftar" class="btn-daftar">PPDB</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h2>Membentuk Generasi <span>Berakhlakul Karimah</span> & Berjiwa Aswaja</h2>
+            <p>Selamat Datang di Madrasah Diniyah Al-Muttaqin, tempat terbaik menanamkan nilai-nilai keislaman, aqidah, dan akhlak mulia sejak dini.</p>
+            <a href="#profil" class="btn">Pelajari Selengkapnya</a>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-book-open"></i>
+            <h3>Kurikulum Aswaja</h3>
+            <p>Pembelajaran berasaskan keilmuan Ahlussunnah wal Jama'ah An-Nahdliyah yang moderat dan toleran.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>Asatidz Berkompeten</h3>
+            <p>Dibidik langsung oleh alumni pondok pesantren terkemuka yang ahli di bidang kitab kuning.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-heart"></i>
+            <h3>Pembiasaan Akhlak</h3>
+            <p>Fokus utama pada adab harian, salat berjamaah, hafalan juz amma, dan doa harian.</p>
+        </div>
+    </section>
+
+    <!-- Profil / Tentang Kami -->
+    <section class="about" id="profil">
+        <div class="about-img">
+            <!-- Gambar Ilustrasi Islami Premium -->
+            <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80" alt="Madrasah Al-Muttaqin">
+        </div>
+        <div class="about-text">
+            <h2 class="section-title">Mengenal Madrasah</h2>
+            <p>Madrasah Diniyah Al-Muttaqin berlokasi di Desa Kunci, Kecamatan Dander, Kabupaten Bojonegoro. Kami hadir sebagai lembaga pendidikan keagamaan non-formal yang berkomitmen melengkapi pendidikan formal anak-anak dalam bidang agama Islam.</p>
+            <p>Melalui metode pembelajaran yang klasikal namun interaktif, kami memastikan santri tidak hanya pandai membaca Al-Qur'an dan Kitab, tetapi juga memiliki mental beradab yang siap menghadapi tantangan zaman.</p>
+        </div>
+    </section>
+
+    <!-- Program Kelas / Akademik -->
+    <section class="programs" id="akademik">
+        <h2 class="section-title">Jenjang & Program Pendidikan</h2>
+        <p style="color: #666; max-width: 600px; margin: 0 auto 50px auto;">Kami membagi tingkat pembelajaran sesuai dengan usia dan kemampuan serap ilmu santri secara bertahap.</p>
+        
+        <div class="program-grid">
+            <!-- Kelas Awaliyah -->
+            <div class="program-card">
+                <div class="program-header">
+                    <h3>Madrasah Awaliyah</h3>
+                    <p>Tingkat Dasar (3-4 Tahun)</p>
+                </div>
+                <div class="program-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Fiqih Dasar (Safinatun Najah)</li>
+                        <li><i class="fas fa-check-circle"></i> Aqidah & Akhlak (Aqidatul Awam)</li>
+                        <li><i class="fas fa-check-circle"></i> Praktek Ibadah & Salat</li>
+                        <li><i class="fas fa-check-circle"></i> Tarikh / Sejarah Islam</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kelas Wustha -->
+            <div class="program-card">
+                <div class="program-header">
+                    <h3>Madrasah Wustha</h3>
+                    <p>Tingkat Menengah (3 Tahun)</p>
+                </div>
+                <div class="program-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Nahwu & Shorof Dasar (Jurumiyah)</li>
+                        <li><i class="fas fa-check-circle"></i> Fiqih Lanjutan (Fathul Qorib)</li>
+                        <li><i class="fas fa-check-circle"></i> Hadits Arba'in Nawawi</li>
+                        <li><i class="fas fa-check-circle"></i> Tajwid & Tahsin Al-Qur'an</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Program Ekstrakurikuler -->
+            <div class="program-card">
+                <div class="program-header">
+                    <h3>Ekstrakurikuler</h3>
+                    <p>Pengembangan Bakat Santri</p>
+                </div>
+                <div class="program-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Seni Hadroh & Sholawat</li>
+                        <li><i class="fas fa-check-circle"></i> Khitobah (Latihan Pidato 3 Bahasa)</li>
+                        <li><i class="fas fa-check-circle"></i> Seni Kaligrafi Islam</li>
+                        <li><i class="fas fa-check-circle"></i> Pembiasaan Istighosah & Tahlil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color: white; font-weight:700;">Madrasah Al-Muttaqin</h4>
+                <p>Mencetak generasi Islami, berilmu amaliyah, dan beramal ilmiah berlandaskan manhaj Ahlussunnah wal Jama'ah.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tautan Cepat</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#profil">Profil Madrasah</a></li>
+                    <li><a href="#akademik">Program Akademik</a></li>
+                    <li><a href="#">Pendaftaran Santri Baru</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Alamat Lembaga</h4>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--accent-gold); margin-right: 8px;"></i> RT.05 / RW.02, Desa Kunci, Kecamatan Dander, Kabupaten Bojonegoro, Jawa Timur.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Madin Al-Muttaqin Kunci Dander. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+  </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portal Admin Madin</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-container { width: 100%; max-width: 400px; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .login-header { text-align: center; margin-bottom: 25px; }
+        .login-header h2 { margin: 0; color: #2c3e50; font-size: 24px; }
+        .login-header p { margin: 5px 0 0 0; color: #7f8c8d; font-size: 14px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #34495e; }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .form-control:focus { border-color: #3498db; outline: none; }
+        .btn-login { width: 100%; padding: 12px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-login:hover { background-color: #1a252f; }
+        .error-msg { color: #e74c3c; font-size: 14px; text-align: center; margin-bottom: 15px; display: none; }
+        .footer { text-align: center; margin-top: 25px; font-size: 12px; color: #95a5a6; }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-header">
+        <h2>Portal Admin Madin</h2>
+        <p>Silakan masuk untuk mengakses data</p>
+    </div>
+
+    <div id="errorMsg" class="error-msg"></div>
+
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input type="email" id="email" class="form-control" placeholder="nama@madin.id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-login" id="submitBtn">Masuk Aplikasi</button>
+    </form>
+
+    <div class="footer">
+        <p>Sistem Keamanan Terintegrasi Spreadsheet</p>
+    </div>
+</div>
+
+<script>
+    // MASUKKAN URL WEB APP SCRIPT ANDA DI SINI
+    const WEB_APP_URL = "PASANG_URL_WEB_APP_ANDA_DI_SINI";
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMsg = document.getElementById('errorMsg');
+
+        submitBtn.innerText = "Memproses...";
+        submitBtn.disabled = true;
+        errorMsg.style.display = "none";
+
+        fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "text/plain" }, // Menggunakan text/plain untuk menghindari preflight CORS bawaan Apps Script
+            body: JSON.stringify({
+                action: "login",
+                email: email,
+                password: password
+            })
+        })
+        .then(res => res.json())
+        .then(response => {
+            if (response.status === "success") {
+                // Simpan data login sementara di session browser
+                sessionStorage.setItem("isLoggedIn", "true");
+                sessionStorage.setItem("adminNama", response.user.nama);
+                sessionStorage.setItem("adminRole", response.user.role);
+                
+                // Pindah ke halaman data guru
+                window.location.href = "dataguru.html";
+            } else {
+                errorMsg.innerText = response.message;
+                errorMsg.style.display = "block";
+                submitBtn.innerText = "Masuk Aplikasi";
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(err => {
+            errorMsg.innerText = "Gagal terhubung ke server.";
+            errorMsg.style.display = "block";
+            submitBtn.innerText = "Masuk Aplikasi";
+            submitBtn.disabled = false;
+        });
+    });
+</script>
+</body>
+</html>
